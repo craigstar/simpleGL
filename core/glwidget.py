@@ -86,8 +86,8 @@ class GLWidget(QOpenGLWidget):
         if scroll > 0: scroll = 1
         if scroll < 0: scroll = -1
 
-        direction = self.getMouseDir(event.x(), event.y())
-        self.cam.zoom(direction * scroll)
+        self.rotCenter = self.getRotCenter(event.x(), event.y())
+        self.cam.zoom(self.rotCenter * scroll)
         self.update()
 
     def getMouseDir(self, winx, winy):
